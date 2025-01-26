@@ -69,7 +69,7 @@ export default function MarkdownEditor({
   return (
     <textarea
       ref={textareaRef}
-      className="w-full h-full min-h-[300px] p-4 border rounded-lg bg-background text-foreground resize-none focus:outline-none focus:ring-2 focus:ring-primary"
+      className="w-full h-full min-h-[450px] p-4 border rounded-lg bg-background text-foreground resize-none focus:outline-none focus:ring-2 focus:ring-primary"
       value={value}
       onChange={handleChange}
       onKeyDown={handleKeyDown}
