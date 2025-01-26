@@ -7,6 +7,7 @@ import MarkdownEditor from "@/components/MarkdownEditor";
 import MarkdownPreview from "@/components/MarkdownPreview";
 import Toolbar from "@/components/Toolbar";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const [markdown, setMarkdown] = useState("");
@@ -131,6 +132,7 @@ export default function Home() {
           <MarkdownEditor value={markdown} onChange={handleMarkdownChange} />
           <MarkdownPreview markdown={markdown} />
         </div>
+        <Footer />
       </div>
     </ThemeProvider>
   );
