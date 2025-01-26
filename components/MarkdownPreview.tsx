@@ -10,7 +10,7 @@ interface MarkdownPreviewProps {
 
 export default function MarkdownPreview({ markdown }: MarkdownPreviewProps) {
   return (
-    <div className="w-full h-full min-h-[300px] p-4 border rounded-lg overflow-auto prose prose-sm max-w-none bg-background text-foreground">
+    <div className="w-full h-full min-h-[450px] p-4 border rounded-lg overflow-auto prose prose-sm max-w-none bg-background text-foreground">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
@@ -69,7 +69,7 @@ export default function MarkdownPreview({ markdown }: MarkdownPreviewProps) {
             const match = /language-(\w+)/.exec(className || "");
             return !inline && match ? (
               <SyntaxHighlighter
-                {...props}
+                {...(props as any)}
                 style={tomorrow}
                 language={match[1]}
                 PreTag="div"
