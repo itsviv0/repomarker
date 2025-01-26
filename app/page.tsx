@@ -2,18 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { ThemeProvider } from "next-themes";
-import { useTheme } from "next-themes";
-import { Switch } from "@/components/ui/switch";
-import { Moon, Sun } from "lucide-react";
 import LoadingScreen from "@/components/LoadingScreen";
 import MarkdownEditor from "@/components/MarkdownEditor";
 import MarkdownPreview from "@/components/MarkdownPreview";
 import Toolbar from "@/components/Toolbar";
+import Header from "@/components/Header";
 
 export default function Home() {
   const [markdown, setMarkdown] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const savedMarkdown = localStorage.getItem("markdown");
@@ -120,21 +117,7 @@ export default function Home() {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <div className="container mx-auto p-4 min-h-screen bg-background text-foreground">
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-3xl font-bold pt-4">
-            RepoMarker - Markdown Editor
-          </h1>
-          <div className="flex items-center space-x-2">
-            <Sun className="h-4 w-4" />
-            <Switch
-              checked={theme === "dark"}
-              onCheckedChange={() =>
-                setTheme(theme === "dark" ? "light" : "dark")
-              }
-            />
-            <Moon className="h-4 w-4" />
-          </div>
-        </div>
+        <Header />
         <Toolbar
           onFormat={handleFormatting}
           onImageUpload={handleImageUpload}
