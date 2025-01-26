@@ -38,6 +38,7 @@ interface ToolbarProps {
   onClear: () => void;
   onDownload: () => void;
   onInsertTable: () => void;
+  markdown: string;
 }
 
 export default function Toolbar({
@@ -48,6 +49,7 @@ export default function Toolbar({
   onClear,
   onDownload,
   onInsertTable,
+  markdown,
 }: ToolbarProps) {
   const [imageUrl, setImageUrl] = useState("");
   const [linkUrl, setLinkUrl] = useState("");
@@ -174,7 +176,12 @@ export default function Toolbar({
       <div className="flex-wrap pb-4 gap-2 space-x-2">
         <Popover>
           <PopoverTrigger asChild>
-            <Button onClick={handleCopy} variant="outline" size="icon">
+            <Button
+              onClick={handleCopy}
+              variant="outline"
+              size="icon"
+              disabled={!markdown}
+            >
               {isCopied ? (
                 <Check className="h-4 w-4" />
               ) : (
@@ -188,10 +195,20 @@ export default function Toolbar({
             </p>
           </PopoverContent>
         </Popover>
-        <Button onClick={onClear} variant="outline" size="icon">
+        <Button
+          onClick={onClear}
+          variant="outline"
+          size="icon"
+          disabled={!markdown}
+        >
           <Trash2 className="h-4 w-4" />
         </Button>
-        <Button onClick={onDownload} variant="outline" size="icon">
+        <Button
+          onClick={onDownload}
+          variant="outline"
+          size="icon"
+          disabled={!markdown}
+        >
           <Download className="h-4 w-4" />
         </Button>
       </div>

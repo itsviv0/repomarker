@@ -127,6 +127,7 @@ export default function Home() {
           onClear={handleClear}
           onDownload={handleDownload}
           onInsertTable={handleInsertTable}
+          markdown={markdown}
         />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <MarkdownEditor value={markdown} onChange={handleMarkdownChange} />
