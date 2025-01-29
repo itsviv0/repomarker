@@ -109,7 +109,17 @@ export default function MarkdownPreview({
         {children}
       </li>
     ),
-    a: ({ href, children, className, ...props }) => (
+    a: ({
+      href,
+      children,
+      className,
+      ...props
+    }: {
+      href?: string;
+      children: React.ReactNode;
+      className?: string;
+      [key: string]: any;
+    }) => (
       <a
         href={href}
         className={`text-blue-600 hover:underline ${className || ""}`}
@@ -120,7 +130,15 @@ export default function MarkdownPreview({
         {children}
       </a>
     ),
-    blockquote: ({ children, className, ...props }) => (
+    blockquote: ({
+      children,
+      className,
+      ...props
+    }: {
+      children: React.ReactNode;
+      className?: string;
+      [key: string]: any;
+    }) => (
       <blockquote
         className={`border-l-4 border-gray-300 pl-4 italic my-4 ${
           className || ""
@@ -130,7 +148,15 @@ export default function MarkdownPreview({
         {children}
       </blockquote>
     ),
-    table: ({ children, className, ...props }) => (
+    table: ({
+      children,
+      className,
+      ...props
+    }: {
+      children: React.ReactNode;
+      className?: string;
+      [key: string]: any;
+    }) => (
       <table
         className={`border-collapse table-auto w-full my-4 ${className || ""}`}
         {...props}
@@ -138,7 +164,15 @@ export default function MarkdownPreview({
         {children}
       </table>
     ),
-    th: ({ children, className, ...props }) => (
+    th: ({
+      children,
+      className,
+      ...props
+    }: {
+      children: React.ReactNode;
+      className?: string;
+      [key: string]: any;
+    }) => (
       <th
         className={`border px-4 py-2 bg-gray-100 ${className || ""}`}
         {...props}
@@ -146,12 +180,30 @@ export default function MarkdownPreview({
         {children}
       </th>
     ),
-    td: ({ children, className, ...props }) => (
+    td: ({
+      children,
+      className,
+      ...props
+    }: {
+      children: React.ReactNode;
+      className?: string;
+      [key: string]: any;
+    }) => (
       <td className={`border px-4 py-2 ${className || ""}`} {...props}>
         {children}
       </td>
     ),
-    img: ({ src, alt, className, ...props }) => (
+    img: ({
+      src,
+      alt,
+      className,
+      ...props
+    }: {
+      src?: string;
+      alt?: string;
+      className?: string;
+      [key: string]: any;
+    }) => (
       <img
         src={src}
         alt={alt}
@@ -160,7 +212,19 @@ export default function MarkdownPreview({
         {...props}
       />
     ),
-    code: ({ node, inline, className, children, ...props }) => {
+    code: ({
+      node,
+      inline,
+      className,
+      children,
+      ...props
+    }: {
+      node: any;
+      inline?: boolean;
+      className?: string;
+      children: React.ReactNode;
+      [key: string]: any;
+    }) => {
       const match = /language-(\w+)/.exec(className || "");
       return !inline && match ? (
         <SyntaxHighlighter
@@ -181,7 +245,15 @@ export default function MarkdownPreview({
         </code>
       );
     },
-    pre: ({ children, className, ...props }) => (
+    pre: ({
+      children,
+      className,
+      ...props
+    }: {
+      children: React.ReactNode;
+      className?: string;
+      [key: string]: any;
+    }) => (
       <pre
         className={`overflow-auto p-4 rounded-md bg-gray-100 my-4 ${
           className || ""
