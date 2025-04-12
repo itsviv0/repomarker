@@ -1,6 +1,7 @@
 import { Switch } from "./ui/switch";
 import { Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Header() {
@@ -8,7 +9,9 @@ export default function Header() {
   return (
     <div className="flex justify-between items-center mb-4">
       <Link href="/" className="flex items-center">
-        <img
+        <Image
+          width={200}
+          height={40}
           src={theme === "dark" ? "/repomarker-light.png" : "/repomarker.png"}
           alt="logo"
           className="h-10"

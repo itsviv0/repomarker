@@ -1,4 +1,5 @@
 import { Github } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
@@ -6,7 +7,13 @@ export default function Footer() {
     <footer className="mb-0 sm:mt-12 py-4 sm:py-6 border-t dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-center space-x-2 sm:space-x-2 text-gray-600 dark:text-gray-400 text-sm sm:text-base">
         <Link href="/">
-          <img src="/branding.svg" alt="Branding RepoMarker" className="w-5" />
+          <Image
+            width={20}
+            height={20}
+            src="/branding.svg"
+            alt="Branding RepoMarker"
+            className="w-5"
+          />
         </Link>
         <span className="text-base fonxxt-medium">|</span>
         <span className="text-base font-medium">Made by</span>
