@@ -10,6 +10,9 @@ interface MarkdownPreviewProps {
   className?: string;
 }
 
+// Define a type for common HTML attributes
+type HTMLElementProps = React.HTMLAttributes<HTMLElement>;
+
 export default function MarkdownPreview({
   markdown,
   className = "",
@@ -18,9 +21,8 @@ export default function MarkdownPreview({
     h1: ({
       children,
       ...props
-    }: {
+    }: React.HTMLAttributes<HTMLHeadingElement> & {
       children: React.ReactNode;
-      [key: string]: any;
     }) => (
       <h1 className="text-3xl font-bold mt-6 mb-4" {...props}>
         {children}
@@ -29,9 +31,8 @@ export default function MarkdownPreview({
     h2: ({
       children,
       ...props
-    }: {
+    }: React.HTMLAttributes<HTMLHeadingElement> & {
       children: React.ReactNode;
-      [key: string]: any;
     }) => (
       <h2 className="text-2xl font-bold mt-5 mb-3" {...props}>
         {children}
@@ -40,9 +41,8 @@ export default function MarkdownPreview({
     h3: ({
       children,
       ...props
-    }: {
+    }: React.HTMLAttributes<HTMLHeadingElement> & {
       children: React.ReactNode;
-      [key: string]: any;
     }) => (
       <h3 className="text-xl font-bold mt-4 mb-2" {...props}>
         {children}
@@ -51,9 +51,8 @@ export default function MarkdownPreview({
     p: ({
       children,
       ...props
-    }: {
+    }: React.HTMLAttributes<HTMLParagraphElement> & {
       children: React.ReactNode;
-      [key: string]: any;
     }) => (
       <p className={`mt-3 mb-3 ${className || ""}`} {...props}>
         {children}
@@ -62,9 +61,8 @@ export default function MarkdownPreview({
     div: ({
       children,
       ...props
-    }: {
+    }: React.HTMLAttributes<HTMLDivElement> & {
       children: React.ReactNode;
-      [key: string]: any;
     }) => (
       <div className={className || ""} {...props}>
         {children}
@@ -73,9 +71,8 @@ export default function MarkdownPreview({
     ul: ({
       children,
       ...props
-    }: {
+    }: React.HTMLAttributes<HTMLUListElement> & {
       children: React.ReactNode;
-      [key: string]: any;
     }) => (
       <ul
         className={`list-disc list-inside mt-3 mb-3 ${className || ""}`}
@@ -87,9 +84,8 @@ export default function MarkdownPreview({
     ol: ({
       children,
       ...props
-    }: {
+    }: React.HTMLAttributes<HTMLOListElement> & {
       children: React.ReactNode;
-      [key: string]: any;
     }) => (
       <ol
         className={`list-decimal list-inside mt-3 mb-3 ${className || ""}`}
@@ -101,10 +97,7 @@ export default function MarkdownPreview({
     li: ({
       children,
       ...props
-    }: {
-      children: React.ReactNode;
-      [key: string]: any;
-    }) => (
+    }: React.HTMLAttributes<HTMLLIElement> & { children: React.ReactNode }) => (
       <li className={`mt-1 ${className || ""}`} {...props}>
         {children}
       </li>
@@ -114,11 +107,8 @@ export default function MarkdownPreview({
       children,
       className,
       ...props
-    }: {
-      href?: string;
+    }: React.AnchorHTMLAttributes<HTMLAnchorElement> & {
       children: React.ReactNode;
-      className?: string;
-      [key: string]: any;
     }) => (
       <a
         href={href}
@@ -134,10 +124,8 @@ export default function MarkdownPreview({
       children,
       className,
       ...props
-    }: {
+    }: React.BlockquoteHTMLAttributes<HTMLQuoteElement> & {
       children: React.ReactNode;
-      className?: string;
-      [key: string]: any;
     }) => (
       <blockquote
         className={`border-l-4 border-gray-300 pl-4 italic my-4 ${
@@ -152,10 +140,8 @@ export default function MarkdownPreview({
       children,
       className,
       ...props
-    }: {
+    }: React.TableHTMLAttributes<HTMLTableElement> & {
       children: React.ReactNode;
-      className?: string;
-      [key: string]: any;
     }) => (
       <table
         className={`border-collapse table-auto w-full my-4 ${className || ""}`}
@@ -168,10 +154,8 @@ export default function MarkdownPreview({
       children,
       className,
       ...props
-    }: {
+    }: React.ThHTMLAttributes<HTMLTableHeaderCellElement> & {
       children: React.ReactNode;
-      className?: string;
-      [key: string]: any;
     }) => (
       <th
         className={`border px-4 py-2 bg-gray-100 ${className || ""}`}
@@ -184,10 +168,8 @@ export default function MarkdownPreview({
       children,
       className,
       ...props
-    }: {
+    }: React.TdHTMLAttributes<HTMLTableDataCellElement> & {
       children: React.ReactNode;
-      className?: string;
-      [key: string]: any;
     }) => (
       <td className={`border px-4 py-2 ${className || ""}`} {...props}>
         {children}
@@ -198,12 +180,7 @@ export default function MarkdownPreview({
       alt,
       className,
       ...props
-    }: {
-      src?: string;
-      alt?: string;
-      className?: string;
-      [key: string]: any;
-    }) => (
+    }: React.ImgHTMLAttributes<HTMLImageElement>) => (
       <img
         src={src}
         alt={alt}
@@ -219,12 +196,11 @@ export default function MarkdownPreview({
       children,
       ...props
     }: {
-      node: any;
+      node?: unknown;
       inline?: boolean;
       className?: string;
       children: React.ReactNode;
-      [key: string]: any;
-    }) => {
+    } & React.HTMLAttributes<HTMLElement>) => {
       const match = /language-(\w+)/.exec(className || "");
       return !inline && match ? (
         <SyntaxHighlighter
@@ -249,10 +225,8 @@ export default function MarkdownPreview({
       children,
       className,
       ...props
-    }: {
+    }: React.HTMLAttributes<HTMLPreElement> & {
       children: React.ReactNode;
-      className?: string;
-      [key: string]: any;
     }) => (
       <pre
         className={`overflow-auto p-4 rounded-md bg-gray-100 my-4 ${
