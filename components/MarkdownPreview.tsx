@@ -201,6 +201,7 @@ export default function MarkdownPreview({
       const match = /language-(\w+)/.exec(className || "");
       return !inline && match ? (
         <SyntaxHighlighter
+          // @ts-ignore - The type definitions for react-syntax-highlighter are causing issues
           style={tomorrow}
           language={match[1]}
           PreTag="div"
@@ -243,6 +244,7 @@ export default function MarkdownPreview({
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
+        // @ts-ignore - The type definitions for react-syntax-highlighter are causing issues
         components={baseComponents}
       >
         {markdown}
