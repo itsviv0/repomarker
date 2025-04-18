@@ -6,10 +6,8 @@ Feature rich web-based markdown editor built using NextJS.
 
 - Live preview of markdown
 - Syntax highlighting
-- Export to various formats (PDF, HTML, etc.)
-- Collaborative editing
+- Download the markdown file.
 - Version control integration
-- Customizable themes
 
 ## Installation
 
