@@ -11,7 +11,6 @@ interface MarkdownPreviewProps {
 }
 
 // Define a type for common HTML attributes
-type HTMLElementProps = React.HTMLAttributes<HTMLElement>;
 
 export default function MarkdownPreview({
   markdown,
@@ -190,13 +189,11 @@ export default function MarkdownPreview({
       />
     ),
     code: ({
-      node,
       inline,
       className,
       children,
       ...props
     }: {
-      node?: unknown;
       inline?: boolean;
       className?: string;
       children: React.ReactNode;
